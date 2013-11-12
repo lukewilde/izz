@@ -10,5 +10,8 @@ block content
         a(href='/gallery/travel') Travel
   .gallery
     each image in images
-      a(href=image.big)
+      a(href=image.big, data-lightbox='gallery')
         img(src=image.src, alt=image.name)
+
+prepend script
+  script(src='/js/lightbox-2.6.min.js')
