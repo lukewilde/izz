@@ -1,5 +1,5 @@
 body:after
-  content url(../img/close.png) url(../img/loading.gif) url(../img/prev.png) url(../img/next.png)
+  content url('/images/close.png') url('/images/loading.gif') url('/images/prev.png') url('/images/next.png')
   display none
 
 .lightboxOverlay
@@ -60,7 +60,7 @@ body:after
   width 32px
   height 32px
   margin 0 auto
-  background url(../img/loading.gif) no-repeat
+  background url('/images/loader.gif') no-repeat
 
 .lb-nav
   position absolute
@@ -86,14 +86,14 @@ body:after
   float left
 
   &:hover
-    background url(../img/prev.png) left 48% no-repeat
+    background url('/images/prev.png') left 48% no-repeat
 
 .lb-next
   right 0
   float right
 
   &:hover
-    background url(../img/next.png) right 48% no-repeat
+    background url('/images/next.png') right 48% no-repeat
 
 .lb-dataContainer
   margin 0 auto
@@ -135,7 +135,7 @@ body:after
     float right
     width 30px
     height 30px
-    background url('../img/close.png') top right no-repeat
+    background url('/images/close.png') top right no-repeat
     text-align right
     outline none
     filter unquote('progid:DXImageTransform.Microsoft.Alpha(Opacity=70)')
