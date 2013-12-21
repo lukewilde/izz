@@ -8,3 +8,13 @@ block content
     each image in images
       a(href='/gallery/' + type + '/' + image.name)
         img(src=image.src, alt=image.name)
+
+append script
+  script(src='/js/lib/packery.pkgd.js')
+  script
+    var container = document.querySelector('.gallery')
+      , config = 
+        { itemSelector: '.item'
+        , gutter: 10
+        }
+      , pckry = new Packery(container, config);
