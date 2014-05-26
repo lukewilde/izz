@@ -26,6 +26,10 @@ function makeRoutes(app, imageCache, debug) {
     res.render('about')
   })
 
+  app.get('/bliink', function (req, res) {
+    res.render('bliink')
+  })
+
   app.use(function(req, res, next){
     res.render('404')
   });
