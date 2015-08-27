@@ -21,41 +21,10 @@ html
   body
 
     header.container
-      .row.clear
-        .col-sm-7.header-title
-          a(href='/')
-            img.logo(src="/images/noodles.svg", alt="site's logo, some noodles")
-          h1.blog-title
-            a(href='/') Luke Wilde
-              span Web & Games Programmer
-
-
-        .col-sm-5.nav-container
-          ul.nav.navbar-nav
-            li
-              a(href='/portfolio') Portfolio
-            li
-              a(href='/blog') Blog
-
-    .title-container
-      svg(width="100%", height="12px", viewBox="0 0 100 10", version="1.1", preserveAspectRatio="none", xmlns="http://www.w3.org/2000/svg")
-        polygon(points="0 0, 100 10, 0 10", fill="#f5f5f5")
-
-      .lead
-        .container
-          block lead
-            h2 A freelance programmer who helps people create digital experiences
-
-      svg.lead-svg(width="100%", height="25px", viewBox="0 0 100 10", version="1.1", preserveAspectRatio="none", xmlns="http://www.w3.org/2000/svg")
-        polygon(points="0 0, 100 0, 0 10", fill="#f5f5f5")
-
-    .container
-      .row.clear
-        block content-container
-          .col-sm-12.blog-main
-            block content
+      h1.blog-title
+        a(href='/') Isabelle Smillie
 
     block scripts
-      script(src="/js/lib/jquery-2.1.4.min.js")
+      // script(src="/js/lib/jquery-2.1.4.min.js")
 
       include bits/ga.jade
