@@ -14,7 +14,7 @@ var express = require('express')
   , configurePassport = require('./lib/configure-passport')
   , makeArticleService = require('./lib/services/article/service')
   , makePortfolioService = require('./lib/services/portfolio/service')
-  , port = 3112
+  , port = 3115
   , app = express()
 
 function compile(str, path) {
