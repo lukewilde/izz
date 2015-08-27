@@ -1,0 +1,16 @@
+extends ../layout
+
+block title
+  title #{article.headline} #{properties.title}
+
+block lead
+  h2.blog-post-title=article.headline
+  p.blog-post-meta=article.published.long
+
+block content
+
+  div.blog-post
+    !=article.body
+
+append scripts
+  !=article.scripts

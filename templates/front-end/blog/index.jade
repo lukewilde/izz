@@ -1,0 +1,23 @@
+extends ../layout
+
+block title
+  title My very own blog #{properties.title}
+
+block lead
+  h2 My Very Own Blog
+
+block content
+
+
+  .blog-stubs.blog-index
+
+    for article in articles
+
+      //- make markup consistant with homepage (and make sure you use h3)
+      .row.stub
+        .col-xs-3
+          p.date=article.published.short.month
+            span=article.published.short.year
+        .col-xs-9
+          a.title(href=article.url)=article.headline
+          p.description!=article.description

@@ -1,0 +1,38 @@
+extends ../layout
+
+block content
+
+  h1 Portfolio
+    a.btn.btn-primary.pull-right(href='/admin/portfolio/new') New Portfolio Item
+
+  .table-responsive
+    table.table.table-striped
+      thead
+        tr
+          th Edit
+          th Headline
+          th Slug
+          th Technologies
+          th Live
+          th Published
+          th Created
+          th Delete
+      tbody
+        for item in items
+          tr
+            td
+              a.btn.btn-primary(href="/admin/portfolio/edit/" + item.slug) Edit
+            td
+              a(href="/portfolio/" + item.slug + "?preview")=item.headline
+            td=item.slug
+            td=item.tech
+            td=item.published.long
+            td
+              if item.isLive
+                span.label.label-success Yes
+              else
+                span.label.label-danger No
+            td=item.created
+            td
+              a.btn.btn-danger(href="/admin/portfolio/delete/" + item._id) Delete
+

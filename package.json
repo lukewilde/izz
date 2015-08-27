@@ -1,22 +1,42 @@
 {
   "name": "izzwa",
-  "version": "0.0.0",
-  "description": "A temporary site for izzwa's serious site.",
+  "version": "1.0.0",
+  "description": "Izzwa's serious site.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "",
-  "author": "luke wilde",
+  "repository": "git@github.com:lukewilde/izz.git",
+  "author": "Luke Wilde",
   "license": "BSD",
   "dependencies": {
-    "connect": "~2.7.3",
-    "gzippo": "~0.2.0",
-    "express": "*",
-    "jade": "*",
-    "stylus": "*",
-    "nib": "*",
-    "lodash": "~1.3.1",
-    "async": "~0.2.9"
+    "async": "*0.8.0",
+    "body-parser": "*1.2.0",
+    "compression": "*1.0.2",
+    "connect-flash": "*0.1.1",
+    "cookie-parser": "*1.0.1",
+    "crud-service": "0.0.5",
+    "express": "*4.2.0",
+    "express-session": "*1.1.0",
+    "highlight.js": "*8.2.0",
+    "jade": "*1.3.1",
+    "lodash": "*2.4.1",
+    "marked": "*0.3.2",
+    "moment": "*2.6.0",
+    "mongodb": "*1.4.3",
+    "morgan": "*1.0.1",
+    "passport": "*0.2.0",
+    "passport-local": "*1.0.0",
+    "rss": "*0.3.2",
+    "save": "0.0.20",
+    "save-mongodb": "0.0.11",
+    "schemata": "*2.0.1",
+    "service-locator": "*1.0.0",
+    "stylus": "*0.45.0",
+    "validity": "0.0.3",
+    "validity-unique-property": "*0.2.0"
+  },
+  "devDependencies": {
+    "json2csv": "*2.2.1"
   }
 }

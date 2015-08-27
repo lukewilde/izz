@@ -1,0 +1,192 @@
+extends ../layout
+
+block container
+  div.container-fluid
+
+    block content
+      h1.page-header Portfolio Control
+
+      if (errors)
+        div.panel.panel-default.panel-danger
+          div.panel-heading
+            h3.panel-title Validation Issues
+          div.panel-body
+            ul
+              for error in errors
+                li=error
+
+      .row
+        .col-md-12
+          .row
+            .col-md-6
+              form.form-horizontal(action="", method="post", role="form")
+                div.panel.panel-default
+
+                  div.panel-heading
+                    h3.panel-title Basic Details
+
+                  div.panel-body
+                    .form-group(class=errors && errors.headline ? "has-error" : "")
+                      .col-sm-2
+                        label.control-label(for="headline") Headline
+                      .col-sm-10
+                        input.form-control(type="text", name="headline", value=item.headline)
+                        if (errors && errors.headline)
+                          span.help-block=errors.headline
+
+                    .form-group(class=errors && errors.slug ? "has-error" : "")
+                      .col-sm-2
+                        label.control-label(for="slug") Slug
+                      .col-sm-10
+                        input.form-control(type="text", name="slug", value=item.slug)
+                        if (errors && errors.slug)
+                          span.help-block=errors.slug
+
+                    .form-group(class=errors && errors.tech ? "has-error" : "")
+                      .col-sm-2
+                        label.control-label(for="tech") Technologies
+                      .col-sm-10
+                        input.form-control(type="text", name="tech", value=item.tech)
+                        if (errors && errors.tech)
+                          span.help-block=errors.tech
+
+                    .form-group(class=errors && errors.client ? "has-error" : "")
+                      .col-sm-2
+                        label.control-label(for="client") Client
+                      .col-sm-10
+                        input.form-control(type="text", name="client", value=item.client)
+                        if (errors && errors.client)
+                          span.help-block=errors.client
+
+                    .form-group(class=errors && errors.bigImage ? "has-error" : "")
+                      .col-sm-2
+                        label.control-label(for="bigImage") Big Image
+                      .col-sm-10
+                        input.form-control(type="text", name="bigImage", value=item.bigImage)
+                        if (errors && errors.bigImage)
+                          span.help-block=errors.bigImage
+
+                    .form-group(class=errors && errors.smallImage ? "has-error" : "")
+                      .col-sm-2
+                        label.control-label(for="smallImage") Small Image
+                      .col-sm-10
+                        input.form-control(type="text", name="smallImage", value=item.smallImage)
+                        if (errors && errors.smallImage)
+                          span.help-block=errors.smallImage
+
+                    .form-group(class=errors && errors.link ? "has-error" : "")
+                      .col-sm-2
+                        label.control-label(for="link") Link
+                      .col-sm-10
+                        input.form-control(type="text", name="link", value=item.link)
+                        if (errors && errors.link)
+                          span.help-block=errors.link
+
+                    .form-group(class=errors && errors.type ? "has-error" : "")
+                      .col-sm-2
+                        label.control-label(for="type") Type
+                      .col-sm-10
+                        label.radio-inline
+                          input(type="radio", name="type", value="game", checked=item.type == 'game')
+                          | Game
+                        label.radio-inline
+                          input(type="radio", name="type", value="website", checked=item.type == 'website')
+                          | Website
+                        if (errors && errors.type)
+                          span.help-block=errors.type
+
+                    .form-group(class=errors && errors.description ? "has-error" : "")
+                      .col-sm-2
+                        label.control-label(for="description") Description
+                      .col-sm-10.blog-main
+                        textarea.form-control(v-model="input", name="description", rows=5)=item.description
+                        if (errors && errors.description)
+                          span.help-block=errors.description
+
+                    .form-group(class=errors && errors.body ? "has-error" : "")
+                      #editor
+                        .col-sm-2
+                          label.control-label(for="body") Body
+                        .col-sm-10.blog-main
+                          textarea.form-control(v-model="input", name="body", rows=20)=item.body
+                          if (errors && errors.body)
+                            span.help-block=errors.body
+
+                    .form-group(class=errors && errors.scripts ? "has-error" : "")
+                      .col-sm-2
+                        label.control-label(for="scripts") Scripts
+                      .col-sm-10.blog-main
+                        textarea.form-control(v-model="input", name="scripts", rows=5)=item.scripts
+                        if (errors && errors.scripts)
+                          span.help-block=errors.scripts
+
+                    .form-group(class=errors && errors.published ? "has-error" : "")
+                      .col-sm-2
+                        label.control-label(for="published") Published Date
+                      .col-sm-10
+                        input.form-control(type="text", name="published-pretty", value=item.published)
+                        if (errors && errors.published)
+                          span.help-block=errors.published
+
+                    .form-group
+                        .col-sm-2
+                        .col-sm-10
+                          .checkbox
+                            label
+                              input(type="checkbox", name="isFeatured", checked=item.isFeatured)
+                              | Is Featured
+
+                    .form-group
+                        .col-sm-2
+                        .col-sm-10
+                          .checkbox
+                            label
+                              input(type="checkbox", name="isVisible", checked=item.isVisible)
+                              | Is Visible
+
+                    input.form-control(type="hidden", name="published", value=item.published)
+                    input.form-control(type="hidden", name="_id", value=item._id)
+
+                    .btn-toolbar.toolbar
+                      .btn-group
+                        button.btn.btn-primary(type="submit") Save
+                        button.btn.btn-success(type="submit", name="continue", value="true") Save and Continue
+                        button.btn.btn-warning(type="submit", name="cancel", value="true") Cancel
+
+                      .btn-group.pull-right
+                        button.btn.btn-default(type="submit", name="draft", value="true") Draft
+                        button.btn.btn-default(type="submit", name="publish", value="true") Publish
+
+
+            .col-md-6.preview
+              iframe.preview(src="/portfolio/" + item.slug + '?preview')
+
+
+
+append scripts
+  script(src="/js/lib/slugg.js")
+  script(src="/js/lib/pikaday.js")
+  script(src="/js/lib/vue.min.js")
+  script(src="/js/lib/marked.min.js")
+
+  script.
+    $(function() {
+      var $publishedHidden = $('input[name=published]')
+        , $publishedPretty = $('input[name=published-pretty]')
+        , picker = new Pikaday({ field: $('input[name=published-pretty]')[0] } )
+        , $headline = $('input[name=headline]')
+        , $slug = $('input[name=slug]')
+        , $body = $('textarea[name=body]')
+        , $preview = $('iframe.preview')
+        , offset = 0
+
+      $headline.bind('blur', function () {
+        if ($slug.val() === "") {
+          $slug.val(slugg($headline.val()))
+        }
+      })
+
+      $publishedPretty.bind('change', function(event) {
+        $publishedHidden.val(new Date($(event.target).val()).toISOString())
+      })
+    })

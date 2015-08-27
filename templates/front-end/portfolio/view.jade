@@ -1,0 +1,25 @@
+extends ../layout
+
+block title
+  title #{item.client}: #{item.headline} #{properties.title}
+
+block lead
+  h2.blog-post-title #{item.client}: #{item.headline}
+  span.tech=item.tech
+  p.blog-post-meta=item.published.long
+
+block content
+
+  div.blog-post
+
+    .row
+      .splash
+        a(href=item.link)
+          img(src=item.bigImage, title=item.headline, alt=item.headline)
+
+    !=item.body
+
+    a.btn.btn-lg.pull-right(href=item.link) Check it out
+
+append scripts
+  !=item.scripts
