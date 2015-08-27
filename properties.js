@@ -1,5 +1,5 @@
 module.exports =
-  { title: 'Luke Wilde | Freelance web and games programmer'
-  , description: 'A blog from a JavaScript web and games developer.'
-  , siteUrl: 'http://lukewilde.co.uk'
+  { title: 'Isabelle Smillie | Illustrator and Photographer'
+  , description: 'A portfolio of my experience as an Illustrator and Photographer.'
+  , siteUrl: 'http://isabellesmillie.co.uk'
   }
