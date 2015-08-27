@@ -12,7 +12,6 @@ var express = require('express')
   , MongoClient = require('mongodb').MongoClient
   , makeRoutes = require('./lib/routes')
   , configurePassport = require('./lib/configure-passport')
-  , makeArticleService = require('./lib/services/article/service')
   , makePortfolioService = require('./lib/services/portfolio/service')
   , port = 3115
   , app = express()
@@ -60,7 +59,6 @@ MongoClient.connect('mongodb://127.0.0.1:27017/lukewilde', function(err, db) {
 
   configurePassport(db)
 
-  serviceLocator.register('article', makeArticleService(db))
   serviceLocator.register('portfolio', makePortfolioService(db))
 
   makeRoutes(app, serviceLocator)
