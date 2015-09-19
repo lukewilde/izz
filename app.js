@@ -1,5 +1,6 @@
 var express = require('express')
   , stylus = require('stylus')
+  , nib = require('nib')
   , passport = require('passport')
   , flash = require('connect-flash')
   , cookieParser = require('cookie-parser')
@@ -20,6 +21,7 @@ function compile(str, path) {
   return stylus(str)
     .set('filename', path)
     .set('compress', true)
+    .use(nib())
     .define('url', stylus.url(
       { paths: [__dirname + '/public']
       }
