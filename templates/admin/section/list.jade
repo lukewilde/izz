@@ -2,8 +2,8 @@ extends ../layout
 
 block content
 
-  h1 Portfolio
-    a.btn.btn-primary.pull-right(href='/admin/portfolio/new') New Portfolio Item
+  h1 Sections
+    a.btn.btn-primary.pull-right(href='/admin/section/new') New Section
 
   .table-responsive
     table.table.table-striped
@@ -21,9 +21,9 @@ block content
         for item in items
           tr
             td
-              a.btn.btn-primary(href="/admin/portfolio/edit/" + item.slug) Edit
+              a.btn.btn-primary(href="/admin/section/edit/" + item.slug) Edit
             td
-              a(href="/portfolio/" + item.slug + "?preview")=item.headline
+              a(href="/section/" + item.slug + "?preview")=item.headline
             td=item.slug
             td=item.tech
             td=item.published.long
@@ -34,5 +34,5 @@ block content
                 span.label.label-danger No
             td=item.created
             td
-              a.btn.btn-danger(href="/admin/portfolio/delete/" + item._id) Delete
+              a.btn.btn-danger(href="/admin/section/delete/" + item._id) Delete
 

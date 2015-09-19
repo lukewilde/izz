@@ -1,0 +1,108 @@
+extends ../layout
+
+block container
+  div.container-fluid
+
+    block content
+      h1.page-header Section Control
+
+      if (errors)
+        div.panel.panel-default.panel-danger
+          div.panel-heading
+            h3.panel-title Validation Issues
+          div.panel-body
+            ul
+              for error in errors
+                li=error
+
+      .row
+        .col-md-2
+        .col-md-8
+          form.form-horizontal(action="", method="post", role="form")
+            div.panel.panel-default
+
+              div.panel-heading
+                h3.panel-title Basic Details
+
+              div.panel-body
+                .form-group(class=errors && errors.title ? "has-error" : "")
+                  .col-sm-2
+                    label.control-label(for="title") title
+                  .col-sm-10
+                    input.form-control(type="text", name="title", value=item.title)
+                    if (errors && errors.title)
+                      span.help-block=errors.title
+
+                .form-group(class=errors && errors.slug ? "has-error" : "")
+                  .col-sm-2
+                    label.control-label(for="slug") Slug
+                  .col-sm-10
+                    input.form-control(type="text", name="slug", value=item.slug)
+                    if (errors && errors.slug)
+                      span.help-block=errors.slug
+
+                .form-group(class=errors && errors.description ? "has-error" : "")
+                  .col-sm-2
+                    label.control-label(for="description") Description
+                  .col-sm-10.blog-main
+                    textarea.form-control(v-model="input", name="description", rows=5)=item.description
+                    if (errors && errors.description)
+                      span.help-block=errors.description
+
+                .form-group(class=errors && errors.published ? "has-error" : "")
+                  .col-sm-2
+                    label.control-label(for="published") Published Date
+                  .col-sm-10
+                    input.form-control(type="text", name="published-pretty", value=item.published)
+                    if (errors && errors.published)
+                      span.help-block=errors.published
+
+                .form-group
+                    .col-sm-2
+                    .col-sm-10
+                      .checkbox
+                        label
+                          input(type="checkbox", name="isVisible", checked=item.isVisible)
+                          | Is Visible
+
+                input.form-control(type="hidden", name="published", value=item.published)
+                input.form-control(type="hidden", name="_id", value=item._id)
+
+                .btn-toolbar.toolbar
+                  .btn-group
+                    button.btn.btn-primary(type="submit") Save
+                    button.btn.btn-success(type="submit", name="continue", value="true") Save and Continue
+                    button.btn.btn-warning(type="submit", name="cancel", value="true") Cancel
+
+                  .btn-group.pull-right
+                    button.btn.btn-default(type="submit", name="draft", value="true") Draft
+                    button.btn.btn-default(type="submit", name="publish", value="true") Publish
+
+
+
+
+
+append scripts
+  script(src="/js/lib/slugg.js")
+  script(src="/js/lib/pikaday.js")
+  script(src="/js/lib/vue.min.js")
+  script(src="/js/lib/marked.min.js")
+
+  script.
+    $(function() {
+      var $publishedHidden = $('input[name=published]')
+        , $publishedPretty = $('input[name=published-pretty]')
+        , picker = new Pikaday({ field: $('input[name=published-pretty]')[0] } )
+        , $title = $('input[name=title]')
+        , $slug = $('input[name=slug]')
+
+      $title.bind('blur', function () {
+        if ($slug.val() === "") {
+          $slug.val(slugg($title.val()))
+        }
+      })
+
+      $publishedPretty.bind('change', function(event) {
+        $publishedHidden.val(new Date($(event.target).val()).toISOString())
+      })
+    })

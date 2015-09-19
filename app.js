@@ -13,7 +13,7 @@ var express = require('express')
   , MongoClient = require('mongodb').MongoClient
   , makeRoutes = require('./lib/routes')
   , configurePassport = require('./lib/configure-passport')
-  , makePortfolioService = require('./lib/services/portfolio/service')
+  , makeSectionService = require('./lib/services/section/service')
   , port = 3115
   , app = express()
 
@@ -45,7 +45,6 @@ app.use(morgan('short'))
 
 app.use(stylus.middleware(
   { src: __dirname + '/public/css/'
-  , debug: true
   , compile: compile
   }
 ))
@@ -61,7 +60,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017/izz', function(err, db) {
 
   configurePassport(db)
 
-  serviceLocator.register('portfolio', makePortfolioService(db))
+  serviceLocator.register('section', makeSectionService(db))
 
   makeRoutes(app, serviceLocator)
 
