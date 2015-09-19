@@ -56,7 +56,7 @@ app.set('view engine', 'jade')
 
 app.locals.properties = properties
 
-MongoClient.connect('mongodb://127.0.0.1:27017/lukewilde', function(err, db) {
+MongoClient.connect('mongodb://127.0.0.1:27017/izz', function(err, db) {
   if(err) throw err
 
   configurePassport(db)
